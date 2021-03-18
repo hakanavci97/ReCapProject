@@ -1,4 +1,6 @@
-﻿use RentACar
+﻿create database RentACar
+ 
+ use RentACar
 create table Cars
 (Id int primary key,
 BrandId int,
