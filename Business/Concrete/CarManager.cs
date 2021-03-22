@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,9 +31,14 @@ namespace Business.Concrete
            
         }
 
+        public List<CarDetailDto> carDetailDtos()
+        {
+            return _carDal.carDetailDtos();
+        }
+
         public void Delete(Car car)
         {
-            Console.WriteLine("Araba Silindi");
+            _carDal.Delete(car);
         }
 
         public List<Car> GetAll()
@@ -40,9 +46,9 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetById(int Id)
+        public Car GetById(int Id)
         {
-            throw new NotImplementedException();
+            return _carDal.Get(c => c.Id == Id);
         }
 
         public List<Car> GetCarsByBrandId(int brandId)
@@ -57,7 +63,9 @@ namespace Business.Concrete
 
         public void Update(Car car)
         {
-            Console.WriteLine("Araba Güncellendi");
+            _carDal.Update(car);
         }
+
+     
     }
 }
