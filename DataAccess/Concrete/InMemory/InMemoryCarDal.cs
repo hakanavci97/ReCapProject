@@ -61,6 +61,11 @@ namespace DataAccess.Concrete.InMemory
             return _car.Where(c => c.Id == Id).ToList();
         }
 
+        public List<CarDetailDto> GetCarDetail()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car car)
         {
             Car carToUpdate = _car.SingleOrDefault(c => c.Id == car.Id);
