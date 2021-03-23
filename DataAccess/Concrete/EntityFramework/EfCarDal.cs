@@ -1,7 +1,5 @@
-﻿using Core.DataAccess.EntitiyFramework;
-using DataAccess.Abstract;
+﻿using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.Dtos;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,38 +9,54 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
+    public class EfCarDal : ICarDal
     {
-        public List<CarDetailDto> carDetailDtos()
+        public void Add(Car entity)
         {
-            using (RentACarContext context=new RentACarContext())
+            using (RentACarContext context = new RentACarContext())
             {
-                var result = from c in context.Cars
-                             join cr in context.Colors
-                             on c.ColorId equals cr.Id
-                             join b in context.Brands
-                             on c.BrandId equals b.Id
-                             select new CarDetailDto
-                             {
-                                 CarName = c.CarName, BrandName = b.Name, ColorName = cr.Name, DailyPrice = c.DailyPrice
-                             };
-
-                   return result.ToList();
+                var addedEntity = context.Entry(entity);
+                addedEntity.State = EntityState.Added;
+                context.SaveChanges();
             }
+        }
 
+        public void Delete(Car entity)
+        {
+            using (RentACarContext context = new RentACarContext())
+            {
+                var deletedEntity = context.Entry(entity);
+                deletedEntity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
 
-            //var result = from p in context.Products
-            //             join c in context.Categories
-            //             on p.CategoryId equals c.CategoryId
-            //             select new ProductDetailDto
-            //             {
-            //                 ProductId = p.ProductId,
-            //                 ProductName = p.ProductName,
-            //                 CategoryName = c.CategoryName,
-            //                 UnitsInStock = p.UnitsInStock
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            using (RentACarContext context = new RentACarContext())
+            {
+                return context.Set<Car>().SingleOrDefault(filter);
+            }
+        }
 
-            //             };
-            //return result.ToList();
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            using (RentACarContext context = new RentACarContext())
+            {
+                return filter == null
+                     ? context.Set<Car>().ToList()
+                     : context.Set<Car>().Where(filter).ToList();
+            }
+        }
+
+        public void Update(Car entity)
+        {
+            using (RentACarContext context = new RentACarContext())
+            {
+                var updatedEntity = context.Entry(entity);
+                updatedEntity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

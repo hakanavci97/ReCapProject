@@ -1,6 +1,5 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +27,6 @@ namespace DataAccess.Concrete.InMemory
         public void Add(Car car)
         {
             _car.Add(car);
-        }
-
-        public List<CarDetailDto> carDetailDtos()
-        {
-            throw new NotImplementedException();
         }
 
         public void Delete(Car car)
