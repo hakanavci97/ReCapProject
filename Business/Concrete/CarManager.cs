@@ -31,9 +31,9 @@ namespace Business.Concrete
            
         }
 
-        public List<CarDetailDto> GetCarDetail()
+        public List<CarDetailDto> GetCarDetails()
         {
-            return _carDal.GetCarDetail();
+            return _carDal.GetCarDetails();
         }
 
         public void Delete(Car car)
