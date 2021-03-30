@@ -20,25 +20,19 @@ namespace Business.Concrete
         public IResult Add(Rental rental)
         {
             var result = GetByRentalCarId(rental.CarId);
-            var CarControl = 0;
-            foreach (var r in result.Data)
-            {
-                if(r.ReturnDate==null)
-                {
-                    CarControl += 1;
-                }
-            }
-            if(CarControl==1)
-            { return new ErrorResult(Messages.AnErrorOccurred); }
-            else
+            var CarControl = result.Data.Count;
+            if (CarControl == 0)
             {
                 _rentalDal.Add(rental);
                 return new SuccessResult(Messages.RentalAdded);
             }
-          
-            
+            else
+            {
+                return new ErrorResult(Messages.AnErrorOccurred);
+            }
 
         }
+
 
         public IResult Delete(Rental rental)
         {
@@ -48,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetByRentalCarId(int CarId)
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == CarId));
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == CarId && r.ReturnDate==null));
         }
 
         public IResult Update(Rental rental)

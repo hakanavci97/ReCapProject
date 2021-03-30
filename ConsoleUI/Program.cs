@@ -44,7 +44,7 @@ namespace ConsoleUI
             //Console.WriteLine("--------------------------------");
 
             Rental rental = new Rental();
-            rental.Id = 6;
+            rental.Id = 7;
             rental.CarId = 4;
             rental.CustomerId = 1;
             rental.RentDate = DateTime.Now;
