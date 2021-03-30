@@ -27,7 +27,7 @@ namespace Business.Constants
         public static string UserAdded = "Kullanıcı Eklendi";
         public static string UserDeleted = "Kullanıcı Silindi";
         public static string RentalAdded = "Kiralama Bilgisi Eklendi";
-        public static string RentalDeleted = "Kiralama Bilgisi Silindi";
+        public static string RentalDeleted = "Kiralama Bilgisi Silindi.";
         public static string RentalUpdated = "Kiralama Bilgisi Güncellendi.";
         public static string UserUpated = "Kullanıcı Güncellendi.";
         public static string AnErrorOccurred = "Hata Oluştu.";
