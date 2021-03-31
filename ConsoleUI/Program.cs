@@ -30,18 +30,8 @@ namespace ConsoleUI
             Console.WriteLine("--------------------------------");
             Console.WriteLine(car_.Data.Id+" "+ car_.Data.CarName +" "+ car_.Data.BrandId +" "+ car_.Data.ColorId +" "+ car_.Data.DailyPrice +" "+ car_.Data.Description);
 
-            //Car car1 = new Car();
-            //car1.Id = 11;
-            //car1.CarName = "Accent";
-            //car1.ColorId = 4;
-            //car1.ModelYear = DateTime.Now;
-            //car1.DailyPrice = 197.5m;
-            //car1.Description = "Yeni Araç";
-            //Console.WriteLine("--------------------------------");
-            //CarManager carManagerAdded = new CarManager(new EfCarDal());
-            //var resultAdded= carManagerAdded.Add(car1);
-            //Console.WriteLine(resultAdded.Message);
-            //Console.WriteLine("--------------------------------");
+          
+            
 
             Rental rental = new Rental();
             rental.Id = 7;
@@ -56,36 +46,16 @@ namespace ConsoleUI
             var rentalAdded = rentalManager.Add(rental);
             Console.WriteLine(rentalAdded.Message);
 
-            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            //var result1 = rentalManager.GetByRentalCarId(4);
-            //foreach (var results2 in result1.Data)
-            //{
-            //    Console.WriteLine(results2.RentDate);
-            //}
+           
+            
 
 
 
 
 
 
-            //foreach (var car in carManager.GetCarsByBrandId(6))
-            //{
-            //    Console.WriteLine(car.Id + " " + car.CarName+" "+ car.BrandId + " " + car.ColorId + " " + car.ModelYear.Year + " " + car.DailyPrice + " " + car.Description);
-
-            //}
-            //Console.WriteLine("--------------------------------");
-
-            //ColorManager colorManager = new ColorManager(new EfColorDal());
-            //foreach (var color in colorManager.GetAll())
-            //{
-            //    Console.WriteLine(color.Id+" "+color.Name);
-            //}
-            //Console.WriteLine("--------------------------------");
-            //BrandManager brandManager = new BrandManager(new EfBrandDal());
-            //foreach (var brand in brandManager.GetAll())
-            //{
-            //    Console.WriteLine(brand.Id + " " + brand.Name);
-            //}
+           
+            
 
 
 
