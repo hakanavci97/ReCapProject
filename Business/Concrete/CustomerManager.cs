@@ -30,6 +30,11 @@ namespace Business.Concrete
 
         }
 
+        public IDataResult<List<Customer>> GetAll()
+        {
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(),Messages.CustomersListed);
+        }
+
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);

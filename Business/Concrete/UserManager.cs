@@ -29,6 +29,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
+        public IDataResult<List<User>> GetAll()
+        {
+          return new SuccessDataResult<List<User>>(_userDal.GetAll(),Messages.UsersListed);
+
+        }
+
         public IResult Update(User user)
         {
             _userDal.Update(user);

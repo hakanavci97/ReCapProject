@@ -20,8 +20,8 @@ namespace WebAPI.Controllers
             _carService = carService;
         }
 
-        [HttpGet("GetCarAll")]
-        public IActionResult GetCarAll()
+        [HttpGet("GetCarsAll")]
+        public IActionResult GetCarsAll()
         {
             var result = _carService.GetAll();
             if(result.Success)
@@ -45,11 +45,63 @@ namespace WebAPI.Controllers
                 return BadRequest(result);
         }
 
-        [HttpGet("GetCarById")]
+        [HttpPost("CarDelete")]
+        public IActionResult CarDelete(Car car)
+        {
+            var result = _carService.Delete(car);
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+            else
+                return BadRequest(result);
+        }
+
+        [HttpPost("CarUpdate")]
+        public IActionResult CarUpdate(Car car)
+        {
+            var result = _carService.Update(car);
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+            else
+                return BadRequest(result);
+        }
+
+
+
+        [HttpPost("GetCarById")]
         
         public IActionResult GetCarById(int Id)
         {
             var result = _carService.GetById(Id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+                return BadRequest(result);
+        }
+
+        [HttpGet("GetCarsByBrandId")]
+        public IActionResult GetCarsByBrandId(int brandId)
+        {
+            var result = _carService.GetCarsByBrandId(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+                return BadRequest(result);
+        }
+
+        [HttpGet("GetCarsByColorId")]
+        public IActionResult GetCarsByColorId(int colorId)
+        {
+            var result = _carService.GetCarsByColorId(colorId);
             if (result.Success)
             {
                 return Ok(result);

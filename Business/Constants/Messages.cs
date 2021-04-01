@@ -32,5 +32,7 @@ namespace Business.Constants
         public static string UserUpated = "Kullanıcı Güncellendi.";
         public static string AnErrorOccurred = "Hata Oluştu.";
         public static string MaintenanceTime = "Sistem bakımda.";
+        public static string CustomersListed = "Müşteriler Listelendi";
+        public static string UsersListed = "Kullanıcılar Listelendi";
     }
 }
